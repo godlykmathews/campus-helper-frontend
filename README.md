@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Campus Helper Frontend
+
+A modern Next.js frontend application for the Campus Helper system, providing students with easy access to class timetables, bus schedules, and canteen menus.
+
+## Features
+
+- **🏠 Homepage**: Modern landing page with feature overview
+- **📅 Timetable**: View class schedules by day with room information
+- **🚌 Bus Schedule**: Check bus timings and routes for campus commute
+- **🍽️ Canteen Menu**: Browse daily menu items with prices and categories
+- **👤 User Authentication**: Login and registration system
+- **⚙️ Admin Panel**: Administrative interface for data management
+- **📱 Responsive Design**: Works seamlessly on desktop and mobile devices
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **HTTP Client**: Axios
+- **Authentication**: JWT with cookies
+- **State Management**: React Context API
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+ installed
+- Backend API running (see Campus Helper backend)
+
+### Installation
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd Frontend/campus-helper-frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create environment file:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+4. Update the environment variables:
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:8000
+   ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── admin/             # Admin dashboard
+│   ├── bus/               # Bus schedule page
+│   ├── canteen/           # Canteen menu page
+│   ├── login/             # Login page
+│   ├── register/          # Registration page
+│   ├── timetable/         # Timetable page
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Homepage
+├── components/            # Reusable components
+│   ├── LoadingSpinner.tsx
+│   └── Navbar.tsx
+├── contexts/              # React contexts
+│   └── AuthContext.tsx
+├── lib/                   # Utility libraries
+│   └── api.ts            # Axios configuration
+├── services/              # API service functions
+│   ├── auth.ts
+│   ├── bus.ts
+│   ├── canteen.ts
+│   └── timetable.ts
+└── types/                 # TypeScript type definitions
+    └── index.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API Integration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The frontend communicates with the FastAPI backend through RESTful endpoints:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Authentication**: `/auth/login`, `/auth/register`, `/auth/me`
+- **Timetable**: `/timetable/`, `/timetable/{day}`
+- **Bus Schedule**: `/bus/`, `/bus/{route}`
+- **Canteen Menu**: `/canteen/`, `/canteen/{day}`
 
-## Learn More
+## Features Overview
 
-To learn more about Next.js, take a look at the following resources:
+### User Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **View Timetables**: Browse class schedules by day
+2. **Check Bus Schedules**: Find bus timings and routes
+3. **Browse Canteen Menu**: View menu items with prices and categories
+4. **User Authentication**: Secure login and registration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Admin Features
 
-## Deploy on Vercel
+1. **Dashboard Access**: Administrative interface for data management
+2. **Data Management**: Add, edit, and delete timetables, bus schedules, and menu items
+3. **User Management**: View and manage user accounts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Responsive Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application is fully responsive and optimized for:
+- Desktop computers
+- Tablets
+- Mobile phones
+
+## Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+### Code Style
+
+- TypeScript for type safety
+- ESLint for code linting
+- Tailwind CSS for styling
+- Component-based architecture
+
+## Environment Variables
+
+- `NEXT_PUBLIC_API_URL` - Backend API base URL
+
+## Deployment
+
+The application can be deployed on:
+- Vercel (recommended for Next.js)
+- Netlify
+- Any hosting platform that supports Node.js
+
+For Vercel deployment:
+1. Connect your repository to Vercel
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on git push
+
+## Contributing
+
+1. Create a new branch for your feature
+2. Make your changes
+3. Test thoroughly
+4. Submit a pull request
+
+## License
+
+This project is part of the Campus Helper system.
